@@ -1,9 +1,8 @@
-	allprojects {
-		repositories {
-			maven { url 'https://jitpack.io' }
-		}
-	}
-    
-    dependencies {
-		implementation 'com.github.jacek-marchwicki:leveldb-jni:master-SNAPSHOT'
-	}
+repositories {
+    maven {
+        url 'https://dl.bintray.com/jacek-marchwicki/maven/'
+    }
+}
+dependencies {
+	implementation 'org.fusesource.leveldbjni:leveldbjni:1.8'
+}
