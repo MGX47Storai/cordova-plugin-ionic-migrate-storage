@@ -1,7 +1,5 @@
 repositories {
-    maven {
-        mavenCentral()
-    }
+    mavenCentral()
 }
 dependencies {
     implementation 'org.fusesource.leveldbjni:leveldbjni:1.8'
