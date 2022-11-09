@@ -1,8 +1,9 @@
-repositories {
-    maven { 
-        url 'https://jitpack.io'
-    }
-}
-dependencies {
-    implementation 'com.github.jacek-marchwicki:leveldb-jni:'
-}
+	allprojects {
+		repositories {
+			maven { url 'https://jitpack.io' }
+		}
+	}
+    
+    dependencies {
+		implementation 'com.github.jacek-marchwicki:leveldb-jni:'
+	}
