@@ -143,7 +143,7 @@ public class MigrateStorage extends CordovaPlugin {
 //         db.close();
 
 //         this.logDebug("migrateLocalStorage: Successfully migrated localStorage..");
-//     }
+    }
 
     /**
      * Sets up the plugin interface
