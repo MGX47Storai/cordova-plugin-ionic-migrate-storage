@@ -27,7 +27,7 @@ import java.io.File;
  */
 public class MigrateStorage extends CordovaPlugin {
     // Switch this value to enable debug mode
-    private static final boolean DEBUG_MODE = false;
+    private static final boolean DEBUG_MODE = true;
 
     private static final String TAG = "com.migrate.android";
     private static final String FILE_PROTOCOL = "file://";
