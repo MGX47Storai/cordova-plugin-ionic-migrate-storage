@@ -4,10 +4,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.appunite.leveldb.LevelDB;
-import com.appunite.leveldb.LevelIterator;
-import com.appunite.leveldb.Utils;
-import com.appunite.leveldb.WriteBatch;
+import com.github.jacek-marchwicki.leveldb.LevelDB;
+import com.github.jacek-marchwicki.leveldb.LevelIterator;
+import com.github.jacek-marchwicki.leveldb.Utils;
+import com.github.jacek-marchwicki.leveldb.WriteBatch;
 
 // import org.iq80.leveldb.*;
 // import static org.fusesource.leveldbjni.JniDBFactory.*;
