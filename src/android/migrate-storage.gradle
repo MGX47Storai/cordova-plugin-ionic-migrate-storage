@@ -5,5 +5,5 @@
 	}
     
     dependencies {
-		implementation 'com.github.jacek-marchwicki:leveldb-jni:'
+		implementation 'com.github.jacek-marchwicki:leveldb-jni:SNAPSHOT'
 	}
