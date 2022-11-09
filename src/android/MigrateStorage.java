@@ -4,14 +4,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-// import com.github.jacek-marchwicki.leveldb.LevelDB;
-// import com.github.jacek-marchwicki.leveldb.LevelIterator;
-// import com.github.jacek-marchwicki.leveldb.Utils;
-// import com.github.jacek-marchwicki.leveldb.WriteBatch;
-
-// import org.iq80.leveldb.*;
-// import static org.fusesource.leveldbjni.JniDBFactory.*;
-// import java.io.*;
+import org.iq80.leveldb.*;
+import static org.fusesource.leveldbjni.JniDBFactory.*;
+import java.io.*;
 
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
@@ -95,60 +90,60 @@ public class MigrateStorage extends CordovaPlugin {
             return;
         }
         
-//         Options options = new Options();
-//         options.createIfMissing(true);
-//         DB db = factory.open(new File("migration"), options);
-//         try {
-//           db.put(bytes("Tampa"), bytes("rocks"));
-//         } finally {
-//           // Make sure you close the db to shutdown the 
-//           // database and avoid resource leaks.
-//           db.close();
+        Options options = new Options();
+        options.createIfMissing(true);
+        DB db = factory.open(new File("migration"), options);
+        try {
+          db.put(bytes("Tampa"), bytes("rocks"));
+        } finally {
+          // Make sure you close the db to shutdown the 
+          // database and avoid resource leaks.
+          db.close();
+        }
+
+//         LevelDB db = new LevelDB(levelDbPath);
+
+//         String localHostProtocol = this.getLocalHostProtocol();
+
+//         if(db.exists(Utils.stringToBytes("META:" + localHostProtocol))) {
+//             this.logDebug("migrateLocalStorage: Found 'META:" + localHostProtocol + "' key; Skipping migration");
+//             db.close();
+//             return;
 //         }
 
-        LevelDB db = new LevelDB(levelDbPath);
+//         // Yes, there is a typo here; `newInterator` 😔
+//         LevelIterator iterator = db.newInterator();
 
-        String localHostProtocol = this.getLocalHostProtocol();
-
-        if(db.exists(Utils.stringToBytes("META:" + localHostProtocol))) {
-            this.logDebug("migrateLocalStorage: Found 'META:" + localHostProtocol + "' key; Skipping migration");
-            db.close();
-            return;
-        }
-
-        // Yes, there is a typo here; `newInterator` 😔
-        LevelIterator iterator = db.newInterator();
-
-        // To update in bulk!
-        WriteBatch batch = new WriteBatch();
+//         // To update in bulk!
+//         WriteBatch batch = new WriteBatch();
 
 
-        // 🔃 Loop through the keys and replace `file://` with `http://localhost:{portNumber}`
-        logDebug("migrateLocalStorage: Starting replacements;");
-        for(iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
-            String key = Utils.bytesToString(iterator.key());
-            byte[] value = iterator.value();
+//         // 🔃 Loop through the keys and replace `file://` with `http://localhost:{portNumber}`
+//         logDebug("migrateLocalStorage: Starting replacements;");
+//         for(iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
+//             String key = Utils.bytesToString(iterator.key());
+//             byte[] value = iterator.value();
 
-            if (key.contains(FILE_PROTOCOL)) {
-                String newKey = key.replace(FILE_PROTOCOL, localHostProtocol);
+//             if (key.contains(FILE_PROTOCOL)) {
+//                 String newKey = key.replace(FILE_PROTOCOL, localHostProtocol);
 
-                logDebug("migrateLocalStorage: Changing key:" + key + " to '" + newKey + "'");
+//                 logDebug("migrateLocalStorage: Changing key:" + key + " to '" + newKey + "'");
 
-                // Add new key to db
-                batch.putBytes(Utils.stringToBytes(newKey), value);
-            } else {
-                logDebug("migrateLocalStorage: Skipping key:" + key);
-            }
-        }
+//                 // Add new key to db
+//                 batch.putBytes(Utils.stringToBytes(newKey), value);
+//             } else {
+//                 logDebug("migrateLocalStorage: Skipping key:" + key);
+//             }
+//         }
 
-        // Commit batch to DB
-        db.write(batch);
+//         // Commit batch to DB
+//         db.write(batch);
 
-        iterator.close();
-        db.close();
+//         iterator.close();
+//         db.close();
 
-        this.logDebug("migrateLocalStorage: Successfully migrated localStorage..");
-    }
+//         this.logDebug("migrateLocalStorage: Successfully migrated localStorage..");
+//     }
 
     /**
      * Sets up the plugin interface
