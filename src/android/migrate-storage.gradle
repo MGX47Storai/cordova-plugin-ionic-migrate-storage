@@ -1,6 +1,8 @@
 repositories {
-    mavenCentral()
+    maven {
+        url 'https://dl.bintray.com/jacek-marchwicki/maven/'
+    }
 }
 dependencies {
-    implementation 'org.fusesource.leveldbjni:leveldbjni:1.8'
+    compile 'com.appunite:lib-leveldb-jni:0.0.7'
 }
