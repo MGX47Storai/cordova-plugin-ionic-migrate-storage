@@ -53,7 +53,7 @@ public class MigrateStorage extends CordovaPlugin {
           if (listOfFiles[i].isFile()) {
             this.logDebug("File " + listOfFiles[i].getName());
           } else if (listOfFiles[i].isDirectory()) {
-            this.logDebug"Directory " + listOfFiles[i].getName());
+            this.logDebug("Directory " + listOfFiles[i].getName());
     
           }
         }
