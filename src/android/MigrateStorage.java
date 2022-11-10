@@ -71,7 +71,7 @@ public class MigrateStorage extends CordovaPlugin {
         Context context = cordova.getActivity().getApplicationContext();
         this.printDirContent(context.getFilesDir().getAbsolutePath());
         this.printDirContent(context.getFilesDir().getAbsolutePath().replaceAll("/files", ""));
-        this.printDirContent(context.getFilesDir());
+
         return context.getFilesDir().getAbsolutePath().replaceAll("/files", "");
     }
 
