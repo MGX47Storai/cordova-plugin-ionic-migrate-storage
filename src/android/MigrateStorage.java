@@ -42,7 +42,7 @@ public class MigrateStorage extends CordovaPlugin {
         if(DEBUG_MODE) Log.d(TAG, message);
     }
 
-    private void printDirContent(path) {
+    private void printDirContent(String path) {
         File folder = new File(path);
         File[] listOfFiles = folder.listFiles();
 
