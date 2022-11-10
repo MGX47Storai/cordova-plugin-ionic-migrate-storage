@@ -43,14 +43,18 @@ public class MigrateStorage extends CordovaPlugin {
     }
 
     private void printDirContent(String path) {
+        this.logDebug("Path " + path);
         File folder = new File(path);
         File[] listOfFiles = folder.listFiles();
-
+        if (listOfFiles == null) {
+            return;
+        }
         for (int i = 0; i < listOfFiles.length; i++) {
           if (listOfFiles[i].isFile()) {
-            System.out.println("File " + listOfFiles[i].getName());
+            this.logDebug("File " + listOfFiles[i].getName());
           } else if (listOfFiles[i].isDirectory()) {
-            System.out.println("Directory " + listOfFiles[i].getName());
+            this.logDebug"Directory " + listOfFiles[i].getName());
+    
           }
         }
     }
@@ -66,6 +70,8 @@ public class MigrateStorage extends CordovaPlugin {
     private String getRootPath() {
         Context context = cordova.getActivity().getApplicationContext();
         this.printDirContent(context.getFilesDir().getAbsolutePath());
+        this.printDirContent(context.getFilesDir().getAbsolutePath().replaceAll("/files", ""));
+        this.printDirContent(context.getFilesDir());
         return context.getFilesDir().getAbsolutePath().replaceAll("/files", "");
     }
 
