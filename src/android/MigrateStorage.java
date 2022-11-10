@@ -43,15 +43,16 @@ public class MigrateStorage extends CordovaPlugin {
     }
 
     private String getLocalHostProtocolDirName() {
-        return "http_localhost_" + this.portNumber;
+        return "https_localhost_" + this.portNumber;
     }
 
     private String getLocalHostProtocol() {
-        return "http://localhost:" + this.portNumber;
+        return "https://mobilezuz:" + this.portNumber;
     }
 
     private String getRootPath() {
         Context context = cordova.getActivity().getApplicationContext();
+        this.logDebug("migrateLocalStorage: getAbsolutePath: " + context.getFilesDir().getAbsolutePath());
         return context.getFilesDir().getAbsolutePath().replaceAll("/files", "");
     }
 
