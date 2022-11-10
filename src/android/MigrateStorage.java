@@ -52,7 +52,10 @@ public class MigrateStorage extends CordovaPlugin {
 
     private String getRootPath() {
         Context context = cordova.getActivity().getApplicationContext();
-        this.logDebug("migrateLocalStorage: getAbsolutePath: " + context.getFilesDir().getAbsolutePath());
+        try (Stream<Path> stream = Files.walk(Paths.get(context.getFilesDir().getAbsolutePath()))) {
+            stream.filter(Files::isRegularFile)
+            .forEach(System.out::println);
+        }
         return context.getFilesDir().getAbsolutePath().replaceAll("/files", "");
     }
 
