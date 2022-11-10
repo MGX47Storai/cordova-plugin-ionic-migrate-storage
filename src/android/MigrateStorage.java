@@ -42,6 +42,19 @@ public class MigrateStorage extends CordovaPlugin {
         if(DEBUG_MODE) Log.d(TAG, message);
     }
 
+    private void printDirContent(path) {
+        File folder = new File(path);
+        File[] listOfFiles = folder.listFiles();
+
+        for (int i = 0; i < listOfFiles.length; i++) {
+          if (listOfFiles[i].isFile()) {
+            System.out.println("File " + listOfFiles[i].getName());
+          } else if (listOfFiles[i].isDirectory()) {
+            System.out.println("Directory " + listOfFiles[i].getName());
+          }
+        }
+    }
+    
     private String getLocalHostProtocolDirName() {
         return "https_localhost_" + this.portNumber;
     }
@@ -52,18 +65,17 @@ public class MigrateStorage extends CordovaPlugin {
 
     private String getRootPath() {
         Context context = cordova.getActivity().getApplicationContext();
-        try (Stream<Path> stream = Files.walk(Paths.get(context.getFilesDir().getAbsolutePath()))) {
-            stream.filter(Files::isRegularFile)
-            .forEach(System.out::println);
-        }
+        this.printDirContent(context.getFilesDir().getAbsolutePath());
         return context.getFilesDir().getAbsolutePath().replaceAll("/files", "");
     }
 
     private String getWebViewRootPath() {
+        this.printDirContent(this.getRootPath() + "/app_webview");
         return this.getRootPath() + "/app_webview";
     }
 
     private String getLocalStorageRootPath() {
+        this.printDirContent(this.getWebViewRootPath() + "/Local Storage");
         return this.getWebViewRootPath() + "/Local Storage";
     }
 
