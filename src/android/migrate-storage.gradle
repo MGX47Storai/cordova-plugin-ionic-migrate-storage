@@ -1,8 +1,9 @@
-repositories {
-    maven {
-        url 'https://dl.bintray.com/jacek-marchwicki/maven/'
+allprojects {
+    repositories {
+        mavenCentral()
     }
+
 }
 dependencies {
-	implementation 'org.fusesource.leveldbjni:leveldbjni:1.8'
+	compile 'org.fusesource.leveldbjni:leveldbjni:1.8'
 }
