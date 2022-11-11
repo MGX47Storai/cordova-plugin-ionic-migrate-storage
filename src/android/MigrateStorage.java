@@ -5,14 +5,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import org.iq80.leveldb.*;
-import static org.fusesource.leveldbjni.JniDBFactory.*;
+import static org.iq80.leveldb.impl.Iq80DBFactory.*;
 import java.io.*;
 
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
 
 import org.apache.cordova.CordovaWebView;
-import java.io.File;
+// import java.io.File;
 
 /**
  * Main class that is instantiated by cordova
