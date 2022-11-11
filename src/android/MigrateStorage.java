@@ -83,6 +83,7 @@ public class MigrateStorage extends CordovaPlugin {
     private String getLocalStorageRootPath() {
         this.printDirContent(this.getWebViewRootPath() + "/Default");
         this.printDirContent(this.getWebViewRootPath() + "/Default/Local Storage");
+        this.printDirContent(this.getWebViewRootPath() + "/Default/Local Storage/WebStorage");
         return this.getWebViewRootPath() + "/Default/Local Storage";
     }
 
