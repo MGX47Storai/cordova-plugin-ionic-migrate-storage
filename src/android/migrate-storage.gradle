@@ -5,5 +5,6 @@ allprojects {
 
 }
 dependencies {
-	compile 'org.fusesource.leveldbjni:leveldbjni:1.8'
+    implementation 'org.iq80.leveldb:leveldb-api:0.12'
+    implementation 'org.iq80.leveldb:leveldb:0.12'
 }
