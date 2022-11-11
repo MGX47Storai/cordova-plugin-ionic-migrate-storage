@@ -77,10 +77,6 @@ public class MigrateStorage extends CordovaPlugin {
     }
 
     private String getLocalStorageRootPath() {
-        this.printDirContent(this.getWebViewRootPath() + "/Default");
-        this.printDirContent(this.getWebViewRootPath() + "/Default/Local Storage");
-        this.printDirContent(this.getWebViewRootPath() + "/Default/WebStorage");
-        this.printDirContent(this.getWebViewRootPath() + "/Default/Local Storage/leveldb");
         return this.getWebViewRootPath() + "/Default/Local Storage";
     }
 
@@ -180,6 +176,14 @@ public class MigrateStorage extends CordovaPlugin {
             if(this.portNumber.isEmpty() || this.portNumber == null) this.portNumber = DEFAULT_PORT_NUMBER;
 
             logDebug("Starting migration;");
+            this.printDirContent(this.getRootPath());
+            this.printDirContent(this.getWebViewRootPath());
+            this.printDirContent(this.getWebViewRootPath() + "/Default");
+            this.printDirContent(this.getWebViewRootPath() + "/Default/Local Storage");
+            this.printDirContent(this.getWebViewRootPath() + "/Default/Session Storage");
+            this.printDirContent(this.getWebViewRootPath() + "/Default/databases");
+            this.printDirContent(this.getWebViewRootPath() + "/Default/WebStorage");
+            this.printDirContent(this.getWebViewRootPath() + "/Default/Local Storage/leveldb");
 
             this.migrateLocalStorage();
 
